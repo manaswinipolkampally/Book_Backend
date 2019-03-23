@@ -1,0 +1,49 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+POST /images             controllers.ImagesController.uploadImage()
+GET /images/:id          controllers.ImagesController.downloadImage(id: String)
+DELETE /images/:id       controllers.ImagesController.deleteImage(id: String)
+GET /images/book/:id     controllers.ImagesController.getImagesByBookId(id: Integer)
+
+
+GET  /users                     controllers.UsersController.getAllUsers()
+POST /users                      controllers.UsersController.registerUser()
+GET  /users/me                   controllers.UsersController.getCurrentUser()
+PUT /users/login                 controllers.UsersController.signInUser()
+PUT /users/signout              controllers.UsersController.signOutUser()
+PUT /users/update                controllers.UsersController.updateUser()
+
+
+GET  /helloWorld               controllers.HelloWorldController.helloWorld()
+GET  /hello/Mattias            controllers.HelloWorldController.helloMattias()
+GET  /hello/:name              controllers.HelloWorldController.hello(name:String)
+GET  /hellos/:name             controllers.HelloWorldController.hellos(name: String, count: Integer)
+GET  /hellos/:name             controllers.HelloWorldController.hellos(name: String, count: Integer ?= null)
+GET  /hellos/:name             controllers.HelloWorldController.hellos(name: String, count: Integer ?= 2)
+POST /greetings               controllers.HelloWorldController.greetings()
+GET  /me                      controllers.HelloWorldController.me()
+
+POST /books             controllers.BooksController.createBook()
+GET  /books/token       controllers.BooksController.getBookByUser()
+POST  /books/search       controllers.BooksController.searchBooks()
+GET  /books/category     controllers.BooksController.getBookByCategory(name: String)
+# GET  /books/:id          controllers.BooksController.getBookById(id: Integer)
+PUT  /books               controllers.BooksController.getBookById()
+PUT  /books/:id          controllers.BooksController.updateBookById(id: Integer)
+DELETE /books/:id        controllers.BooksController.deleteBookById(id: Integer)
+GET  /books              controllers.BooksController.getAllBooks()
+
+
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+# An example controller showing how to use dependency injection
+GET     /count                      controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.AsyncController.message
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
